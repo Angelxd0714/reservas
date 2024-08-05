@@ -1,0 +1,34 @@
+server:
+  port: 8095
+
+spring:
+  application:
+    name: auth
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/reservas_auth?useSSL=false&serverTimezone=UTC
+    username: mysqluser
+    password: 141198
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQLDialect
+  config:
+    import: optional:configserver:http://localhost:8888
+  security:
+    jwt:
+      key:
+        private: D130eU2ffROd+8QcHSLHzUURp4Bsy8DHSmrh8I/BDqQ
+      user:
+        generator: ANG_KEY
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+logging:
+  level:
+    sql: debug
+
