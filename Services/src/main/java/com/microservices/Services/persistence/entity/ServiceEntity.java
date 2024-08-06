@@ -26,8 +26,6 @@ public class ServiceEntity {
     private Double price;
     @Column(name = "available")
     private Boolean available;
-    @Column(name ="imagen_url")
-    private String imageUrl;
     @ManyToMany
     @JoinTable(name = "service_category", joinColumns = @JoinColumn(name = "service_id"), inverseJoinColumns = @JoinColumn(name = "category_id"))
     private List<CategoryEntity> categories;
