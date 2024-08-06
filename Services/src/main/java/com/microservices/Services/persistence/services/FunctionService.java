@@ -39,6 +39,7 @@ public class FunctionService {
         service.setDescription(serviceEntity.getDescription());
         service.setAvailable(serviceEntity.getAvailable());
         service.setCategories(serviceEntity.getCategories());
+        service.setImageUrl(serviceEntity.getImageUrl());
         repositoryServices.save(service);
     }
     public Iterable<ServiceEntity> findByAvailable(boolean available){

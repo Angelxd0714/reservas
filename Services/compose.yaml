@@ -3,11 +3,11 @@ services:
     image: 'mysql:latest'
     environment:
       MYSQL_ROOT_PASSWORD: '141198'
-      MYSQL_DATABASE: 'reservas_gestion_services'
+      MYSQL_DATABASE: 'reservasgestionservices'
       MYSQL_USER: 'mysqluser'
       MYSQL_PASSWORD: '141198'
     ports:
-      - '3308:3306'
+      - '3311:3306'
     networks:
       - app-network
     healthcheck:

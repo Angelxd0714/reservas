@@ -3,10 +3,10 @@ server:
 
 spring:
   application:
-    name: UserServices
+    name: Services
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/reservas_gestion_services?useSSL=false&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/reservasgestionservices?useSSL=false&serverTimezone=UTCC&allowPublicKeyRetrieval=true
     username: mysqluser
     password: 141198
   jpa:
@@ -22,6 +22,15 @@ spring:
         private: D130eU2ffROd+8QcHSLHzUURp4Bsy8DHSmrh8I/BDqQ
       user:
         generator: ANG_KEY
+file:
+  upload-dir: upload
+
+#azure:
+#  storage:
+#    connection-string: DefaultEndpointsProtocol=https;AccountName=servicesimagesreservas;AccountKey=7ehesbfGFpbiIdFm747vqrHBCzZkzUIOl7bT8LfXOTJwT+R2zeGVtQdiuvlc1N0cSKh7rqIDw9+a+AStE2lDQA==;EndpointSuffix=core.windows.net
+#    container-name: imagesservices
+#    blob-name: images
+
 eureka:
   instance:
     hostname: localhost
@@ -31,4 +40,3 @@ eureka:
 logging:
   level:
     sql: debug
-
