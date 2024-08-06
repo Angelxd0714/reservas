@@ -22,11 +22,14 @@ spring:
         private: D130eU2ffROd+8QcHSLHzUURp4Bsy8DHSmrh8I/BDqQ
       user:
         generator: ANG_KEY
+<<<<<<< HEAD
 file:
   upload-dir: upload
 
 
 
+=======
+>>>>>>> parent of 1aaa073 (add:subir imagenes services)
 eureka:
   instance:
     hostname: localhost
