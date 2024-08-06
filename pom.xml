@@ -31,6 +31,18 @@
    <module>
     Notes
    </module>
+   <module>
+   Reservations
+   </module>
+   <module>
+   ReservationsHistory
+   </module>
+   <module>
+   Services
+   </module>
+   <module>
+   usersService
+   </module>
    <module>conf</module>
  </modules>
   <properties>
@@ -40,11 +52,7 @@
   </properties>
 
 <dependencies>
-  <dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-docker-compose</artifactId>
-    <scope>runtime</scope>
-  </dependency>
+  
 </dependencies>
 
   <build>
