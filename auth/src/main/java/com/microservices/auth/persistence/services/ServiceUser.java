@@ -32,7 +32,7 @@ public class ServiceUser{
   public void deleteById(Long id){
     repositoryUsers.deleteById(id);
   }
-  public void UpdateUser(UserEntity user,long id){
+  public void UpdateUser(long id,UserEntity user){
      repositoryUsers.findById(id)
              .map(user1 -> {
                  user1.setUsername(user.getUsername());
@@ -40,5 +40,8 @@ public class ServiceUser{
                  user1.setRoles(user.getRoles());
                  return repositoryUsers.save(user1);
              });
+  }
+  public Iterable<UserEntity> findAll(){
+    return repositoryUsers.findAll();
   }
 }

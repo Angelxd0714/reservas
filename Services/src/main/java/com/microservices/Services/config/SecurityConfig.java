@@ -1,8 +1,4 @@
-package com.microservices.auth.config;
-
-import com.microservices.auth.config.filter.JwtTokenValidator;
-import com.microservices.auth.persistence.services.UserDetailServiceImpl;
-import com.microservices.auth.utils.JWTutils;
+package com.microservices.Services.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,13 +15,17 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
+import com.microservices.Services.config.filter.JwtTokenValidator;
+import com.microservices.Services.utils.JWTutils;
+
+
 @EnableWebSecurity
 @Configuration
 public class SecurityConfig {
     @Autowired
     private JWTutils jwtUtils;
     @Bean
-    SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity, AuthenticationProvider authenticationProvider) throws Exception {
+    SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
                 .csrf(csrf -> csrf.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
@@ -46,13 +46,6 @@ public class SecurityConfig {
         return authenticationConfiguration.getAuthenticationManager();
     }
 
-    @Bean
-    public AuthenticationProvider authenticationProvider(UserDetailServiceImpl userDetailService) {
-        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
-        provider.setPasswordEncoder(passwordEncoder());
-        provider.setUserDetailsService(userDetailService);
-        return provider;
-    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {

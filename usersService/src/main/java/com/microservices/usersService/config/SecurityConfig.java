@@ -1,8 +1,5 @@
-package com.microservices.auth.config;
+package com.microservices.usersService.config;
 
-import com.microservices.auth.config.filter.JwtTokenValidator;
-import com.microservices.auth.persistence.services.UserDetailServiceImpl;
-import com.microservices.auth.utils.JWTutils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,22 +16,24 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
-@EnableWebSecurity
+import com.microservices.usersService.config.filter.JwtTokenValidator;
+import com.microservices.usersService.utils.JWTutils;
+
 @Configuration
+@EnableWebSecurity
 public class SecurityConfig {
-    @Autowired
+     @Autowired
     private JWTutils jwtUtils;
     @Bean
-    SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity, AuthenticationProvider authenticationProvider) throws Exception {
+    SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
                 .csrf(csrf -> csrf.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(http -> {
-                    http.requestMatchers(HttpMethod.POST, "/auth/**").permitAll();
-                    http.requestMatchers(HttpMethod.GET, "/api/**").hasAnyAuthority("READ");
-                    http.requestMatchers(HttpMethod.POST, "/api/**").hasAnyAuthority("CREATE");
-                    http.requestMatchers(HttpMethod.PUT, "/api/**").hasAnyAuthority("UPDATE");
-                    http.requestMatchers(HttpMethod.DELETE, "/api/**").hasAnyAuthority("DELETE");
+                    http.requestMatchers(HttpMethod.POST, "/api/users/**").hasAnyAuthority("CREATE", "READ");
+                    http.requestMatchers(HttpMethod.GET, "/api/users/**").hasAnyAuthority("CREATE", "READ","UPDATE","DELETE");
+                    http.requestMatchers(HttpMethod.PUT, "/api/users/**").hasAnyAuthority("UPDATE");
+                    http.requestMatchers(HttpMethod.DELETE, "/api/users/**").hasAnyAuthority("DELETE");
                     http.anyRequest().authenticated();
                 })
                 .addFilterBefore(new JwtTokenValidator(jwtUtils), BasicAuthenticationFilter.class)
@@ -46,13 +45,7 @@ public class SecurityConfig {
         return authenticationConfiguration.getAuthenticationManager();
     }
 
-    @Bean
-    public AuthenticationProvider authenticationProvider(UserDetailServiceImpl userDetailService) {
-        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
-        provider.setPasswordEncoder(passwordEncoder());
-        provider.setUserDetailsService(userDetailService);
-        return provider;
-    }
+
 
     @Bean
     public PasswordEncoder passwordEncoder() {
