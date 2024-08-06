@@ -25,11 +25,6 @@ spring:
 file:
   upload-dir: upload
 
-#azure:
-#  storage:
-#    connection-string: DefaultEndpointsProtocol=https;AccountName=servicesimagesreservas;AccountKey=7ehesbfGFpbiIdFm747vqrHBCzZkzUIOl7bT8LfXOTJwT+R2zeGVtQdiuvlc1N0cSKh7rqIDw9+a+AStE2lDQA==;EndpointSuffix=core.windows.net
-#    container-name: imagesservices
-#    blob-name: images
 
 eureka:
   instance:
