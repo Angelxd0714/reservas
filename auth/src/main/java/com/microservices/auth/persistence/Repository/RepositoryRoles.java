@@ -11,4 +11,5 @@ public interface RepositoryRoles extends CrudRepository<RolEntity,Long> {
     @Override
     Optional<RolEntity> findById(Long aLong);
     List<RolEntity> findRoleEntitiesByRoleEnumIn(List<String> roleNames);
+    RolEntity findRoleEntityByRoleEnum(String roleName);
 }

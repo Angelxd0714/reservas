@@ -33,6 +33,7 @@ public class AuthApplication {
 	@Bean
     CommandLineRunner init(RepositoryPermissions servicePermission, RepositoryRoles serviceRol, RepositoryUsers serviceUser) {
         return args -> {
+			/* 
 			PermissionEntity createPermission = PermissionEntity.builder()
 					.name("CREATE")
 					.build();
@@ -49,7 +50,8 @@ public class AuthApplication {
 					.name("DELETE")
 					.build();
 
-			/* Create ROLES */
+			**/
+			/* 
 			RolEntity roleAdmin = RolEntity.builder()
 					.roleEnum(RolEnum.ADMIN)
 					.permissionList(Set.of(createPermission, readPermission, updatePermission, deletePermission))
@@ -77,7 +79,7 @@ public class AuthApplication {
 
 
 			serviceUser.saveAll(List.of(userUser,userAdmin));
-
+*/
         };
     }
 }

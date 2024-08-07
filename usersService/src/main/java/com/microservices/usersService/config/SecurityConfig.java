@@ -5,8 +5,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.AuthenticationProvider;
-import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -30,10 +28,10 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(http -> {
-                    http.requestMatchers(HttpMethod.POST, "/api/users/**").hasAnyAuthority("CREATE", "READ");
-                    http.requestMatchers(HttpMethod.GET, "/api/users/**").hasAnyAuthority("CREATE", "READ","UPDATE","DELETE");
-                    http.requestMatchers(HttpMethod.PUT, "/api/users/**").hasAnyAuthority("UPDATE");
-                    http.requestMatchers(HttpMethod.DELETE, "/api/users/**").hasAnyAuthority("DELETE");
+                    http.requestMatchers(HttpMethod.POST, "/api/users/**").permitAll();
+                    http.requestMatchers(HttpMethod.GET, "/api/users/**").permitAll();
+                    http.requestMatchers(HttpMethod.PUT, "/api/users/**").permitAll();
+                    http.requestMatchers(HttpMethod.DELETE, "/api/users/**").permitAll();
                     http.anyRequest().authenticated();
                 })
                 .addFilterBefore(new JwtTokenValidator(jwtUtils), BasicAuthenticationFilter.class)

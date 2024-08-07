@@ -40,6 +40,4 @@ public class UsersEntity{
    private Date createdAt;
    @Column(name="updated_at")
    private Date updatedAt;
-   private Long userAuth;
-
 }

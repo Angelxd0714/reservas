@@ -31,10 +31,10 @@ public class SecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(http -> {
                     http.requestMatchers(HttpMethod.POST, "/auth/**").permitAll();
-                    http.requestMatchers(HttpMethod.GET, "/api/**").hasAnyAuthority("READ");
-                    http.requestMatchers(HttpMethod.POST, "/api/**").hasAnyAuthority("CREATE");
-                    http.requestMatchers(HttpMethod.PUT, "/api/**").hasAnyAuthority("UPDATE");
-                    http.requestMatchers(HttpMethod.DELETE, "/api/**").hasAnyAuthority("DELETE");
+                    http.requestMatchers(HttpMethod.GET, "/api/**").permitAll();
+                    http.requestMatchers(HttpMethod.POST, "/api/**").permitAll();
+                    http.requestMatchers(HttpMethod.PUT, "/api/**").permitAll();
+                    http.requestMatchers(HttpMethod.DELETE, "/api/**").permitAll();
                     http.anyRequest().authenticated();
                 })
                 .addFilterBefore(new JwtTokenValidator(jwtUtils), BasicAuthenticationFilter.class)

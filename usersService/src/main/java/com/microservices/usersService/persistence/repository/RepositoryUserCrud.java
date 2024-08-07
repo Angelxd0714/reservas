@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import com.microservices.usersService.http.response.UserResponse;
 import com.microservices.usersService.persistence.entity.UsersEntity;
 
 @Repository
@@ -13,4 +14,5 @@ public interface RepositoryUserCrud extends CrudRepository<UsersEntity,Long> {
     @Override
     Optional<UsersEntity> findById(Long id);
     Optional<UsersEntity> findByIdentificacion(long identificacion);
+    
 }

@@ -1,4 +1,5 @@
-package com.microservices.usersService.http.response;
+package com.microservices.Reservations.http.response;
+
 
 import java.sql.Date;
 import lombok.AllArgsConstructor;
@@ -7,7 +8,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.util.Set;
 
-import com.microservices.usersService.dto.rolesAuthDto;
+import com.microservices.Reservations.dto.rolesAuthDto;
+
+
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor

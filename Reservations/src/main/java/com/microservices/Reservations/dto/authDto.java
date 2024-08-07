@@ -1,4 +1,5 @@
-package com.microservices.usersService.dto;
+package com.microservices.Reservations.dto;
+
 
 import java.util.HashSet;
 import java.util.Set;
@@ -16,7 +17,7 @@ public class authDto {
     private Long id;
 
     private String username;
-    private String password;
+  
 
     private boolean isEnabled;
 
