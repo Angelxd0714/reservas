@@ -1,5 +1,5 @@
 services:
-  mysql-service-3:
+  mysql-service-5:
     image: 'mysql:latest'
     environment:
       MYSQL_ROOT_PASSWORD: '141198'
@@ -7,7 +7,7 @@ services:
       MYSQL_USER: 'mysqluser'
       MYSQL_PASSWORD: '141198'
     ports:
-      - '3316:3306'
+      - '3314:3306'
     networks:
       - app-network
     healthcheck:

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.microservices.Reservations.persistence.entity.ReservationEntity;
+import com.microservices.Reservations.persistence.services.ServiceHistorReservations;
 import com.microservices.Reservations.persistence.services.ServiceReservation;
 import java.sql.Timestamp;
 
@@ -20,6 +21,8 @@ import java.sql.Timestamp;
 public class ControllerReservation {
     @Autowired
     private ServiceReservation serviceReservation;
+    @Autowired
+    private ServiceHistorReservations serviceHistorReservations;
 
     @GetMapping("/all")
     public ResponseEntity<?> getAllReservations() {
@@ -65,6 +68,14 @@ public class ControllerReservation {
     public ResponseEntity<?> saveReservation(@RequestBody ReservationEntity reservation) {
         try {
             return ResponseEntity.ok(serviceReservation.saveReservation(reservation));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Error al guardar la reserva: " + e.getMessage());
+        }
+    }
+    @GetMapping("/listHist")
+    public ResponseEntity<?> saveHistorReservation() {
+        try {
+            return ResponseEntity.ok(serviceHistorReservations.getHisIterable());
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("Error al guardar la reserva: " + e.getMessage());
         }

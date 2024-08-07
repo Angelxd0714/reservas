@@ -3,8 +3,11 @@ package com.microservices.Reservations.persistence.entity;
 import java.sql.Date;
 import java.sql.Timestamp;
 
+import com.microservices.Reservations.utils.ReservationEntityListener;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EntityListeners;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -20,6 +23,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 @NoArgsConstructor
+@EntityListeners(ReservationEntityListener.class)
 public class ReservationEntity {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
