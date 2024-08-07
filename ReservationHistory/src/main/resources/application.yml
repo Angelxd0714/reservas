@@ -1,12 +1,9 @@
-server:
-  port: 8095
-
 spring:
   application:
-    name: reviews
+    name: reservacionesHistorial
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/reservas_reviews?useSSL=false&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/reservasHistorygestion?useSSL=false&serverTimezone=UTCallowPublicKeyRetrieval=true
     username: mysqluser
     password: 141198
   jpa:
@@ -22,12 +19,5 @@ spring:
         private: D130eU2ffROd+8QcHSLHzUURp4Bsy8DHSmrh8I/BDqQ
       user:
         generator: ANG_KEY
-eureka:
-  instance:
-    hostname: localhost
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka
-logging:
-  level:
-    sql: debug
+
+

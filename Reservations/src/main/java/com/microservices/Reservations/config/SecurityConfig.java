@@ -1,4 +1,6 @@
-package com.microservices.Services.config;
+package com.microservices.Reservations.config;
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,8 +17,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
-import com.microservices.Services.config.filter.JwtTokenValidator;
-import com.microservices.Services.utils.JWTutils;
+import com.microservices.Reservations.config.filter.JwtTokenValidator;
+import com.microservices.Reservations.utils.JWTutils;
+
+
 
 
 @EnableWebSecurity
@@ -30,16 +34,10 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(http -> {
-
-                    http.requestMatchers(HttpMethod.GET, "/upload/**").permitAll();
-                    http.requestMatchers(HttpMethod.GET, "/api/services/**").permitAll();
-                    http.requestMatchers(HttpMethod.POST, "/api/services/**").hasAnyAuthority("CREATE");
-                    http.requestMatchers(HttpMethod.PUT, "/api/services/**").hasAnyAuthority("CREATE","UPDATE");
-                    http.requestMatchers(HttpMethod.DELETE, "/api/services/**").hasAnyAuthority("DELETE");
-                    http.requestMatchers(HttpMethod.GET, "/api/categories/**").permitAll();
-                    http.requestMatchers(HttpMethod.POST, "/api/categories/**").hasAnyAuthority("CREATE");
-                    http.requestMatchers(HttpMethod.PUT, "/api/categories/**").hasAnyAuthority("CREATE", "UPDATE","READ");
-                    http.requestMatchers(HttpMethod.DELETE, "/api/categories/**").hasAnyAuthority("DELETE");
+                    http.requestMatchers(HttpMethod.GET, "/api/reservation/**").permitAll();
+                    http.requestMatchers(HttpMethod.POST, "/api/reservation/**").hasAnyAuthority("CREATE");
+                    http.requestMatchers(HttpMethod.PUT, "/api/reservation/**").hasAnyAuthority("CREATE","UPDATE");
+                    http.requestMatchers(HttpMethod.DELETE, "/api/reservation/**").hasAnyAuthority("DELETE");
                     http.anyRequest().authenticated();
                 })
                 .addFilterBefore(new JwtTokenValidator(jwtUtils), BasicAuthenticationFilter.class)

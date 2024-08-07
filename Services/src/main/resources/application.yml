@@ -3,10 +3,10 @@ server:
 
 spring:
   application:
-    name: UserServices
+    name: Services
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/reservas_gestion_services?useSSL=false&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/reservas_gestion_services?useSSL=false&serverTimezone=UTCallowPublicKeyRetrieval=true
     username: mysqluser
     password: 141198
   jpa:
@@ -22,17 +22,13 @@ spring:
         private: D130eU2ffROd+8QcHSLHzUURp4Bsy8DHSmrh8I/BDqQ
       user:
         generator: ANG_KEY
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 file:
   upload-dir: upload
 
 
 
-=======
->>>>>>> parent of 1aaa073 (add:subir imagenes services)
-=======
->>>>>>> parent of 1aaa073 (add:subir imagenes services)
+
 eureka:
   instance:
     hostname: localhost

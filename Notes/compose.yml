@@ -1,0 +1,21 @@
+services:
+  mysql-service-3:
+    image: 'mysql:latest'
+    environment:
+      MYSQL_ROOT_PASSWORD: '141198'
+      MYSQL_DATABASE: 'reservas_reviews'
+      MYSQL_USER: 'mysqluser'
+      MYSQL_PASSWORD: '141198'
+    ports:
+      - '3316:3306'
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -hlocalhost -uroot -p141198 --silent"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+networks:
+  app-network:
+    driver: bridge
