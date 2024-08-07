@@ -1,3 +1,6 @@
+server:
+  port: 8050
+
 spring:
   application:
     name: reservacionesHistorial
@@ -19,5 +22,3 @@ spring:
         private: D130eU2ffROd+8QcHSLHzUURp4Bsy8DHSmrh8I/BDqQ
       user:
         generator: ANG_KEY
-
-

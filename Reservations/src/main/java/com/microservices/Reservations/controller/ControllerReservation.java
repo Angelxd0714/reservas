@@ -30,7 +30,7 @@ public class ControllerReservation {
         }
     }
     @GetMapping("searchId/{id}")
-    public ResponseEntity<?> getReservationById(Long id) {
+    public ResponseEntity<?> getReservationById(@PathVariable Long id) {
         try {
             return ResponseEntity.ok(serviceReservation.getReservationById(id));
         } catch (Exception e) {
@@ -38,7 +38,7 @@ public class ControllerReservation {
         }
     }
     @GetMapping("searchDate/{date}")
-    public ResponseEntity<?> getReservationByDate(Timestamp date) {
+    public ResponseEntity<?> getReservationByDate(@PathVariable Timestamp date) {
         try {
             return ResponseEntity.ok(serviceReservation.findByCreatedAt(date));
         } catch (Exception e) {
@@ -46,7 +46,7 @@ public class ControllerReservation {
         }
     }
     @GetMapping("searchServicioId/{servicioId}")
-    public ResponseEntity<?> getReservationByServicioId(Long servicioId) {
+    public ResponseEntity<?> getReservationByServicioId(@PathVariable Long servicioId) {
         try {
             return ResponseEntity.ok(serviceReservation.findByServicioId(servicioId));
         } catch (Exception e) {
@@ -54,7 +54,7 @@ public class ControllerReservation {
         }
     }
     @GetMapping("searchStatus/{status}")
-    public ResponseEntity<?> getReservationByStatus(String status) {
+    public ResponseEntity<?> getReservationByStatus(@PathVariable String status) {
         try {
             return ResponseEntity.ok(serviceReservation.findReservationStatus(status));
         } catch (Exception e) {
@@ -62,7 +62,7 @@ public class ControllerReservation {
         }
     }
     @PostMapping("/save")
-    public ResponseEntity<?> saveReservation(ReservationEntity reservation) {
+    public ResponseEntity<?> saveReservation(@RequestBody ReservationEntity reservation) {
         try {
             return ResponseEntity.ok(serviceReservation.saveReservation(reservation));
         } catch (Exception e) {
