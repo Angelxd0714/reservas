@@ -51,7 +51,7 @@ public class ControllerReservation {
     @GetMapping("searchServicioId/{servicioId}")
     public ResponseEntity<?> getReservationByServicioId(@PathVariable Long servicioId) {
         try {
-            return ResponseEntity.ok(serviceReservation.findByServicioId(servicioId));
+            return ResponseEntity.ok(serviceReservation.getReservationsByServiceId(servicioId));
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("Error al obtener la reserva: " + e.getMessage());
         }

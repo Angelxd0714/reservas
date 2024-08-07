@@ -33,13 +33,13 @@ public class SecurityConfig {
 
                     http.requestMatchers(HttpMethod.GET, "/upload/**").permitAll();
                     http.requestMatchers(HttpMethod.GET, "/api/services/**").permitAll();
-                    http.requestMatchers(HttpMethod.POST, "/api/services/**").hasAnyAuthority("CREATE");
-                    http.requestMatchers(HttpMethod.PUT, "/api/services/**").hasAnyAuthority("CREATE","UPDATE");
-                    http.requestMatchers(HttpMethod.DELETE, "/api/services/**").hasAnyAuthority("DELETE");
+                    http.requestMatchers(HttpMethod.POST, "/api/services/**").permitAll();
+                    http.requestMatchers(HttpMethod.PUT, "/api/services/**").permitAll();
+                    http.requestMatchers(HttpMethod.DELETE, "/api/services/**").permitAll();
                     http.requestMatchers(HttpMethod.GET, "/api/categories/**").permitAll();
-                    http.requestMatchers(HttpMethod.POST, "/api/categories/**").hasAnyAuthority("CREATE");
-                    http.requestMatchers(HttpMethod.PUT, "/api/categories/**").hasAnyAuthority("CREATE", "UPDATE","READ");
-                    http.requestMatchers(HttpMethod.DELETE, "/api/categories/**").hasAnyAuthority("DELETE");
+                    http.requestMatchers(HttpMethod.POST, "/api/categories/**").permitAll();
+                    http.requestMatchers(HttpMethod.PUT, "/api/categories/**").permitAll();
+                    http.requestMatchers(HttpMethod.DELETE, "/api/categories/**").permitAll();
                     http.anyRequest().authenticated();
                 })
                 .addFilterBefore(new JwtTokenValidator(jwtUtils), BasicAuthenticationFilter.class)

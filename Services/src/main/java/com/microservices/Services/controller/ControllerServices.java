@@ -2,7 +2,7 @@ package com.microservices.Services.controller;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
-
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.google.common.io.Files;
+import com.microservices.Services.persistence.entity.CategoryEntity;
 import com.microservices.Services.persistence.entity.ServiceEntity;
 import com.microservices.Services.persistence.services.FunctionService;
 
@@ -67,7 +68,8 @@ public class ControllerServices {
             @RequestParam("name") String name,
             @RequestParam("description") String description,
             @RequestParam("price") Double price,
-            @RequestParam("available") Boolean available) {
+            @RequestParam("available") Boolean available,
+            @RequestParam("categories") List<CategoryEntity> categories) {
         try {
             if (file.isEmpty()) {
                 return ResponseEntity.badRequest().body("File is empty");
@@ -83,6 +85,7 @@ public class ControllerServices {
             service.setPrice(price);
             service.setAvailable(available);
             service.setImageUrl(fullFileUrl);
+            service.setCategories(categories);
             functionService.save(service);
             return ResponseEntity.ok().build();
 

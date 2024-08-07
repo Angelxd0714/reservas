@@ -35,9 +35,9 @@ public class SecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(http -> {
                     http.requestMatchers(HttpMethod.GET, "/api/reservation/**").permitAll();
-                    http.requestMatchers(HttpMethod.POST, "/api/reservation/**").hasAnyAuthority("CREATE");
-                    http.requestMatchers(HttpMethod.PUT, "/api/reservation/**").hasAnyAuthority("CREATE","UPDATE");
-                    http.requestMatchers(HttpMethod.DELETE, "/api/reservation/**").hasAnyAuthority("DELETE");
+                    http.requestMatchers(HttpMethod.POST, "/api/reservation/**").permitAll();
+                    http.requestMatchers(HttpMethod.PUT, "/api/reservation/**").permitAll();
+                    http.requestMatchers(HttpMethod.DELETE, "/api/reservation/**").permitAll();
                     http.anyRequest().authenticated();
                 })
                 .addFilterBefore(new JwtTokenValidator(jwtUtils), BasicAuthenticationFilter.class)
