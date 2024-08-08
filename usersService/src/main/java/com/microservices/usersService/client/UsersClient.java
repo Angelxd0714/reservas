@@ -14,7 +14,7 @@ import com.microservices.usersService.dto.authDto;
 import com.microservices.usersService.http.request.UserRequest;
 
 
-@FeignClient(name="auth",url = "localhost:8080")
+@FeignClient(name="autenticacion-service",url = "localhost:8080")
 public interface UsersClient {
     @GetMapping("/api/{id}")
     authDto findByuserId(@PathVariable Long id);

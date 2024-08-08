@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: autenticacion-service
+    name: auth
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/reservas_auth?useSSL=false&serverTimezone=UTC
@@ -31,4 +31,3 @@ eureka:
 logging:
   level:
     sql: debug
-
