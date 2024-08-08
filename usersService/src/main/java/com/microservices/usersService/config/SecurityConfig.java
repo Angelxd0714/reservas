@@ -30,8 +30,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(http -> {
                     http.requestMatchers(HttpMethod.POST, "/api/users/**").permitAll();
                     http.requestMatchers(HttpMethod.GET, "/api/users/**").permitAll();
-                    http.requestMatchers(HttpMethod.PUT, "/api/users/**").permitAll();
-                    http.requestMatchers(HttpMethod.DELETE, "/api/users/**").permitAll();
+                    http.requestMatchers(HttpMethod.PUT, "/api/users/**").hasAnyAuthority("UPDATE");
+                    http.requestMatchers(HttpMethod.DELETE, "/api/users/**").hasAnyAuthority("DELETE");
                     http.anyRequest().authenticated();
                 })
                 .addFilterBefore(new JwtTokenValidator(jwtUtils), BasicAuthenticationFilter.class)

@@ -75,6 +75,7 @@ public class ControllerUserGestion {
     @PostMapping("/save")
     public ResponseEntity<?> saveUser(
             @RequestBody UserEntity userEntity) {
+                userEntity.setPassword(passwordEncoder.encode(userEntity.getPassword()));
         try {
             return ResponseEntity.ok(userDetailService.save(userEntity));
         } catch (Exception e) {

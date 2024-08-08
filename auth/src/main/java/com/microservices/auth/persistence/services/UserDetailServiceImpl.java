@@ -36,7 +36,7 @@ public class UserDetailServiceImpl implements UserDetailsService {
     private RepositoryRoles roleRepository;
     @Autowired
     private PasswordEncoder passwordEncoder;
-
+    
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         UserEntity userEntity = repositoryUsers.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("El usuario " + username + " no existe."));
@@ -84,8 +84,7 @@ public class UserDetailServiceImpl implements UserDetailsService {
 
         String username = authLoginRequest.username();
         String password = authLoginRequest.password();
-        System.out.println(username);
-        System.out.println(password);
+       
         Authentication authentication = this.authenticate(username, password);
         SecurityContextHolder.getContext().setAuthentication(authentication);
 

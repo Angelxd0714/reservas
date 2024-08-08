@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-
+import com.microservices.usersService.config.filter.JwtTokenValidator;
 import com.microservices.usersService.dto.authDto;
 import com.microservices.usersService.http.request.UserRequest;
 

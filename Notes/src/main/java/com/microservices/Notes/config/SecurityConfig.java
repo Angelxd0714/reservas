@@ -31,7 +31,7 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(http -> {
-                    http.requestMatchers(HttpMethod.GET, "/api/**").hasAnyAuthority("READ");
+                    http.requestMatchers(HttpMethod.GET, "/api/**").permitAll();
                     http.requestMatchers(HttpMethod.POST, "/api/**").hasAnyAuthority("CREATE");
                     http.requestMatchers(HttpMethod.PUT, "/api/**").hasAnyAuthority("UPDATE");
                     http.requestMatchers(HttpMethod.DELETE, "/api/**").hasAnyAuthority("DELETE");
