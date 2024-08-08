@@ -3,7 +3,7 @@ server:
 
 spring:
   config:
-   import: optional:configserver:http://localhost:8888
+    import: optional:configserver:http://localhost:8888
   application:
     name: gateway
   cloud:
@@ -21,35 +21,36 @@ spring:
         uri: http://localhost:8099
         predicates:
         - Path=/api/review/**
-      - id: Reservaciones
+      - id: reservation
         uri: http://localhost:8065
         predicates:
         - Path=/api/reservation/**
-      - id: Services
+      - id: services
         uri: http://localhost:8060
         predicates:
         - Path=/api/services/**
         - Path=/api/categories/**
-      - id: UserServices
+      - id: userServices
         uri: http://localhost:8072
         predicates:
         - Path=/api/users/**
-        
+
 management:
   endpoints:
     web:
       exposure:
         include: "*"
-       
+
 eureka:
-  instance:
-    hostname: localhost
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka
+
 logging:
   level:
-    sql: debug
+    org.springframework.web: DEBUG
+    org.hibernate.SQL: DEBUG
+
  
   
   
