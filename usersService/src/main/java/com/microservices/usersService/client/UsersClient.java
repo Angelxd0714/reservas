@@ -16,17 +16,17 @@ import com.microservices.usersService.http.request.UserRequest;
 
 @FeignClient(name="autenticacion-service",url = "localhost:8080")
 public interface UsersClient {
-    @GetMapping("/api/{id}")
+    @GetMapping("/api/users/{id}")
     authDto findByuserId(@PathVariable Long id);
 
-    @PostMapping("/api/save")
+    @PostMapping("/api/users/save")
     authDto saveUser(@RequestBody authDto user);
 
-    @PutMapping("/api/{id}")
+    @PutMapping("/api/users/{id}")
     authDto upAuthDto(@PathVariable Long id, @RequestBody authDto userRequest);
-    @GetMapping("/api/all")
+    @GetMapping("/api/users/all")
     List<authDto> findAll();
 
-    @DeleteMapping("/api/{id}")
+    @DeleteMapping("/api/users/{id}")
     void delete(@PathVariable Long id);
 }

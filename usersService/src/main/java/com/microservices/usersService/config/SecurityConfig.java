@@ -28,10 +28,10 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(http -> {
-                    http.requestMatchers(HttpMethod.POST, "/api/users/**").permitAll();
-                    http.requestMatchers(HttpMethod.GET, "/api/users/**").permitAll();
-                    http.requestMatchers(HttpMethod.PUT, "/api/users/**").hasAnyAuthority("UPDATE");
-                    http.requestMatchers(HttpMethod.DELETE, "/api/users/**").hasAnyAuthority("DELETE");
+                    http.requestMatchers(HttpMethod.POST, "/api/usersGestion/**").permitAll();
+                    http.requestMatchers(HttpMethod.GET, "/api/usersGestion/**").permitAll();
+                    http.requestMatchers(HttpMethod.PUT, "/api/usersGestion/**").hasAnyAuthority("UPDATE");
+                    http.requestMatchers(HttpMethod.DELETE, "/api/usersGestion/**").hasAnyAuthority("DELETE");
                     http.anyRequest().authenticated();
                 })
                 .addFilterBefore(new JwtTokenValidator(jwtUtils), BasicAuthenticationFilter.class)

@@ -22,7 +22,7 @@ import com.microservices.usersService.persistence.entity.UsersEntity;
 import com.microservices.usersService.persistence.services.ServiceUser;
 
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("/api/usersGestion")
 public class ControllerUser {
     @Autowired
     private ServiceUser serviceUser;

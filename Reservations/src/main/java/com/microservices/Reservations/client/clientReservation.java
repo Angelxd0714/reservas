@@ -9,7 +9,7 @@ import com.microservices.Reservations.http.response.UserResponse;
 
 @FeignClient(name = "UserServices",url="localhost:8080")
 public interface clientReservation {
-  @GetMapping("/api/users/searchId/{id}")
+  @GetMapping("/api/usersGestion/searchId/{id}")
   UserResponse getAuth(@PathVariable Long id);
 
 }
