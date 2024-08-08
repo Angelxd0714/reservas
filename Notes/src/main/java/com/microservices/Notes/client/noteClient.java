@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import com.microservices.Notes.dto.reservationDto;
 
-@FeignClient(name="Reservaciones",url = "localhost:8065")
+@FeignClient(name="Reservaciones",url = "localhost:8080")
 public interface noteClient {
     @GetMapping("/api/reservation/all")
     List<reservationDto> getAllReservations();

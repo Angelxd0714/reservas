@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.microservices.Reservations.dto.servicesDto;
 
-@FeignClient(name="Services",url = "localhost:8060")
+@FeignClient(name="Services",url = "localhost:8080")
 public interface ReservationClient {
 
   @GetMapping("/api/services/searchId/{id}")
