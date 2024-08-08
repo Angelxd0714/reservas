@@ -14,5 +14,5 @@ Este proyecto incluye varios microservicios gestionados con Docker Compose. A co
    Clona el repositorio en tu máquina local:
 
    ```bash
-   git clone https://github.com/tu-usuario/tu-repositorio.git
-   cd tu-repositorio
+   git clone https://github.com/Angelxd0714/reservas.git
+   cd reservas
